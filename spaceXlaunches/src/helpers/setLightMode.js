@@ -1,11 +1,7 @@
-// import RenderLaunches from "../components/RenderLaunches/renderLaunches"
-
-const header = document.querySelector(".header")
 const app = document.querySelector("#app")
+const header = document.querySelector(".header")
 const filtersSection = document.querySelector(".filters")
 const launchesSelection = document.querySelector(".launches-selection")
-// const divLaunch = document.querySelector(".launch")
-// const inputs = document.querySelector("input")
 
 export const setLightMode = (isLightMode) => {
         // setTimeout(() => {

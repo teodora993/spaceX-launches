@@ -1,5 +1,3 @@
-// import { getAllLaunches } from "../service";
-
 export const extractLaunchYears = (arr) =>  {
 
     const years = [];

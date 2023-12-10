@@ -30,8 +30,6 @@ const renderFilters = async (data) => {
     const selectNumber = SelectFlightNumber(allNumbers)
     const selectStatus = SelectLaunchStatus(allStatuses)
 
-    // const randomButton = displayRandomLaunch(allNumbers);
-
     filters.append(
         searchMissionName,
         searchRocketName,
@@ -39,7 +37,6 @@ const renderFilters = async (data) => {
         selectYear,
         selectNumber,
         selectStatus
-        // randomButton
         )
 
         // Display random launch button after other filters
@@ -77,51 +74,5 @@ const fetchAllLaunches = async () => {
     }
 }
 
-// const fetchUpcomingLaunches = async () => {
-//     try {
-//         const response = await getUpcomingLaunches()
-//         renderFilters(response.data)
-//         RenderLaunches(response.data)
-//     } catch(error) {
-//         // eslint-disable-next-line no-console
-//         console.log(error);
-//     }
-// }
-
-// const fetchOneLaunch = async () => {
-//         try {
-//             const response = await getOneLaunch()
-//             // eslint-disable-next-line no-console
-//             // console.log(response)
-//             renderFilters(response.data)
-//             RenderLaunches(response.data)
-//         } catch (error) {
-//             // eslint-disable-next-line no-console
-//             console.log(error)
-//         }
-// }
-
-// // Function to display a random launch based on a flight number
-// const fetchOneLaunch = async (numbers) => {
-//     // const button = document.createElement("button");
-//     // button.textContent = "Display Random Launch";
-//     // button.addEventListener("click", async () => {
-//       const randomFlightNumber = getRandomFlightNumber(numbers);
-//       try {
-//         const response = await getOneLaunch(randomFlightNumber);
-//         RenderLaunches([response.data]); // Render a single launch based on the random flight number
-//       } catch (error) {
-//         console.error(error);
-//       }
-//     // });
-//     return button;
-//   };
-
-// ... (your existing code)
-
-// Call the function to create and append the button
 fetchAllLaunches()
 Header()
-// fetchUpcomingLaunches()
-// fetchOneLaunch(randomFlightNumber)
-// fetchAndDisplayRandomLaunch()

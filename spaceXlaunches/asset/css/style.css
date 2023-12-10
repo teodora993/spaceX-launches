@@ -86,9 +86,9 @@
     text-align: center;
 }
 
-::placeholder {
+/* ::placeholder {
     color: #b6b6d7;
-}
+} */
 
 [type = "text"]:focus, select:focus, option:focus, button:focus, select:active,
 select:focus {
@@ -105,7 +105,7 @@ select {
     appearance: none; 
 }
 
-/* MAIN */
+/* MAIN STYLE*/
 
 .launches-selection {
     display: flex;
@@ -180,6 +180,7 @@ img {
 .d5 {
     animation-delay: 0.6s;
 }
+
 @keyframes pillarMovement {
     0% {
         transform: translateY(0);

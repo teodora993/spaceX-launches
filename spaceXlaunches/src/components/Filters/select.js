@@ -49,7 +49,7 @@ numbers.forEach((el) => {
 selectFlightNumber.addEventListener("change", async (event) => {
   try {
       const response = await getOneLaunch(event.target.value);
-      RenderLaunches([response.data]); // Render a single launch based on the selected flight number
+      RenderLaunches([response.data]); 
   } catch (error) {
     // eslint-disable-next-line no-console
       console.log(error);

@@ -1,5 +1,4 @@
 import { setLightMode } from "../../helpers/setLightMode"
-// import RenderLaunches from "../RenderLaunches/renderLaunches"
 
 const Header = () => {
     let isLightMode = false
@@ -22,7 +21,6 @@ const Header = () => {
     lightMode.addEventListener("click", function() {
         isLightMode = !isLightMode
 
-        // setTimeout(() => {
             if(isLightMode) {
                 lightMode.classList.add("lightMode")
                 lightMode.textContent = "Dark Mode"
@@ -36,7 +34,6 @@ const Header = () => {
             lightMode.classList.remove("lightMode")
             setLightMode(isLightMode)
             lightMode.textContent = "Light Mode"
-        // }, 3000); // 5000 milliseconds (5 seconds) delay
     })
 }
 

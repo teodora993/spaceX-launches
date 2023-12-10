@@ -1,14 +1,3 @@
-// import { getAllLaunches } from "../service";
-
-// export const extractStatus = (arr) =>  {
-
-//     const statuses = [];
-//     arr.forEach((item) => {
-//         if (!statuses.find((el) => el === item.upcoming)) statuses.push(item.upcoming)
-//     })
-//     return statuses;
-// }
-
 export const extractStatus = (arr) => {
     const statuses = [];
 
@@ -21,3 +10,5 @@ export const extractStatus = (arr) => {
 
     return statuses;
 }
+
+// how to name true = upcoming , false = past....

@@ -9,52 +9,47 @@ const RenderLaunches = (launches) => {
         main.append(pError)
         return
     }
-// setTimeout(() => {
-    
-launches.forEach((launch) => {
-    const divLaunch = document.createElement("div")
-    divLaunch.classList.add("launch")
 
-    const imgLaunch = document.createElement("img")
-    imgLaunch.src = launch.links.flickr_images
-    imgLaunch.alt = "Mission patch image"
+        launches.forEach((launch) => {
+        const divLaunch = document.createElement("div")
+        divLaunch.classList.add("launch")
 
-    const launchInfo = document.createElement("div")
-    launchInfo.classList.add("launch-info")
+        const imgLaunch = document.createElement("img")
+        imgLaunch.src = launch.links.mission_patch
+        imgLaunch.alt = "Mission patch image"
 
-    const missionName = document.createElement("h3")
-    missionName.textContent = launch.mission_name
+        const launchInfo = document.createElement("div")
+        launchInfo.classList.add("launch-info")
 
-    const flightNumber = document.createElement("p")
-    flightNumber.textContent = `Flight Number: ${launch.flight_number}`
+        const missionName = document.createElement("h3")
+        missionName.textContent = launch.mission_name
 
-    const rocketName = document.createElement("p")
-    rocketName.textContent = `Rocket Name: ${launch.rocket.rocket_name}`
+        const flightNumber = document.createElement("p")
+        flightNumber.textContent = `Flight Number: ${launch.flight_number}`
 
-    const rocketType = document.createElement("p")
-    rocketType.textContent = `Rocket Type: ${launch.rocket.rocket_type}`
+        const rocketName = document.createElement("p")
+        rocketName.textContent = `Rocket Name: ${launch.rocket.rocket_name}`
 
-    const launchYear = document.createElement("p")
-    launchYear.textContent = `Launch year: ${launch.launch_year}` 
+        const rocketType = document.createElement("p")
+        rocketType.textContent = `Rocket Type: ${launch.rocket.rocket_type}`
 
-    const launchSuccess = document.createElement("p")
-    launchSuccess.textContent = `Launch success: ${launch.launch_success}`
+        const launchYear = document.createElement("p")
+        launchYear.textContent = `Launch year: ${launch.launch_year}` 
 
-    const launchStatus = document.createElement("p")
-    launchStatus.textContent = `Upcoming: ${launch.upcoming}`
+        const launchNationality = document.createElement("p")
+        launchNationality.textContent = `Nationality: ${launch.rocket.second_stage.payloads[0].nationality}`
 
-    // const launchDetails = document.createElement("p")
-    // launchDetails.textContent = launch.details
+        const launchManufacturer = document.createElement("p")
+        launchManufacturer.textContent = `Manufacturer: ${launch.rocket.second_stage.payloads[0].manufacturer}`
 
-    launchInfo.append(missionName, flightNumber, rocketName, rocketType, launchYear, launchSuccess, launchStatus)
-    divLaunch.append(imgLaunch, launchInfo)
+        const launchPaylodType = document.createElement("p")
+        launchPaylodType.textContent = `Payload-type: ${launch.rocket.second_stage.payloads[0].payload_type}`
 
-    main.append(divLaunch)
-})
-// if (typeof callback === 'function') {
-//     callback();
-// }
-// }, 2000);
+        launchInfo.append(missionName, flightNumber, rocketName, rocketType, launchYear, launchNationality, launchManufacturer, launchPaylodType)
+        divLaunch.append(imgLaunch, launchInfo)
+
+        main.append(divLaunch)
+    })
 
 }
 

@@ -4,23 +4,21 @@ import Header from "./components/Header/header"
 import Loader from "./components/Loader/loader";
 import { SearchByLaunchYear, SearchByMissionName, SearchByRocketName } from "./components/Filters/search";
 
-import { SelectLaunchStatus, SelectLaunchYear } from "./components/Filters/select";
+import { SelectLaunchStatus, SelectLaunchYear, SelectFlightNumber } from "./components/Filters/select";
 import { extractLaunchYears } from "./helpers/extractLaunchYears";
 import { extractStatus } from "./helpers/extractStatus";
 
-import { SelectFlightNumber } from "./components/Filters/select";
 import { extractFlightNumbers } from "./helpers/extractFlightNumbers";
-// import { getOneLaunch } from "./service";
-
+import { displayRandomLaunch } from "./components/Filters/button";
+import { displayUpcomingLaunches } from "./components/Filters/button";
 import "../asset/css/style.css"
 
-const renderFilters = (data) => {
+const renderFilters = async (data) => {
     // //eslint-disable-next-line no-console
     // console.log(data);
-    const allYears = extractLaunchYears(data)
-
     const filters = document.querySelector(".filters")
-  
+
+    const allYears = extractLaunchYears(data)
     const allNumbers = extractFlightNumbers(data)
     const allStatuses = extractStatus(data)
 
@@ -32,7 +30,32 @@ const renderFilters = (data) => {
     const selectNumber = SelectFlightNumber(allNumbers)
     const selectStatus = SelectLaunchStatus(allStatuses)
 
-    filters.append(searchMissionName, searchRocketName, searchLaunchYear, selectYear, selectNumber, selectStatus)
+    // const randomButton = displayRandomLaunch(allNumbers);
+
+    filters.append(
+        searchMissionName,
+        searchRocketName,
+        searchLaunchYear,
+        selectYear,
+        selectNumber,
+        selectStatus
+        // randomButton
+        )
+
+        // Display random launch button after other filters
+        try {
+            const randomButton = await displayRandomLaunch(allNumbers);
+            filters.appendChild(randomButton);
+        } catch (error) {
+            console.error(error);
+        }
+        // Display upcoming launches button after other filters
+        try {
+            const upcomingButton = await displayUpcomingLaunches();
+            filters.appendChild(upcomingButton);
+        } catch (error) {
+            console.error(error);
+        }
 }
 
 const fetchAllLaunches = async () => {
@@ -43,7 +66,6 @@ const fetchAllLaunches = async () => {
         setTimeout(async () => {
             const response = await getAllLaunches()
             renderFilters(response.data)
-
             RenderLaunches(response.data)
             // //eslint-disable-next-line no-console
             // console.log(response.data)
@@ -54,6 +76,7 @@ const fetchAllLaunches = async () => {
         console.log(error);
     }
 }
+
 // const fetchUpcomingLaunches = async () => {
 //     try {
 //         const response = await getUpcomingLaunches()
@@ -78,7 +101,27 @@ const fetchAllLaunches = async () => {
 //         }
 // }
 
+// // Function to display a random launch based on a flight number
+// const fetchOneLaunch = async (numbers) => {
+//     // const button = document.createElement("button");
+//     // button.textContent = "Display Random Launch";
+//     // button.addEventListener("click", async () => {
+//       const randomFlightNumber = getRandomFlightNumber(numbers);
+//       try {
+//         const response = await getOneLaunch(randomFlightNumber);
+//         RenderLaunches([response.data]); // Render a single launch based on the random flight number
+//       } catch (error) {
+//         console.error(error);
+//       }
+//     // });
+//     return button;
+//   };
+
+// ... (your existing code)
+
+// Call the function to create and append the button
 fetchAllLaunches()
 Header()
 // fetchUpcomingLaunches()
-// fetchOneLaunch()
+// fetchOneLaunch(randomFlightNumber)
+// fetchAndDisplayRandomLaunch()

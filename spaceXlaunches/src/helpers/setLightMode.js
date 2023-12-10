@@ -11,7 +11,7 @@ export const setLightMode = (isLightMode) => {
         // setTimeout(() => {
             if(isLightMode) {
                 header.style.backgroundColor = "#b6b6d7"
-                header.style.color = "#000"
+                header.style.color = "#b6b6d7"
                 app.style.backgroundColor = "#b6b6d7"
                 app.style.color = "#fff"
                 filtersSection.style.backgroundColor = "#b6b6d7"
